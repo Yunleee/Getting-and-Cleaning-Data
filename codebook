@@ -1,0 +1,37 @@
+This is the code book for the "dataset2.txt". The purpose is to describe the process and transformation performed to create this dataset. 
+The raw data is downloaded from: "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip".
+
+The following text files are used to create the dataset. 
+1. "x_train.txt" and "x_test.txt": measured/process values collected from the experiment.
+2. "y_train.txt" and "y_test.txt": names of the activity, e.g., walking, walking upstairs, etc., involved in the experiment. 
+3. "features.txt": names for each x_train and x_test column.
+4. "subject_train.txt"and  "subject_test.txt": id of each experiement subject.
+5. "activity_labels.txt": descriptive text for "y_train.txt" and "y_test.txt". 
+
+Step 1:
+a. Load "x_train.txt" and "x_test.txt" into R and then merge them into a data.frame, "x_combine".
+b. Load "y_train.txt" and "y_test.txt" into R and then merge them into a data.frame, "y_combine".
+c. Load "subject_train.txt" and "subject_test.txt" into R and then merge them into a data.frame, "subject_combine".
+
+Step 2:
+a. Load "features.txt" into R and create a data.frame, "features".
+b. Select columns with keywords "mean()" and "std()" from the data.frame "features".
+c. Create "x_mean_std" which is a subset of "x_combine" with columns that include the above keywords.
+
+Step 3:
+a. Load "activity_labels.txt" into R and create a data.frame "activities".
+b. Replace the numeric values in "y_combine" with their corresponding descriptive text stored in the data.frame "activities".
+c. Lable "y_combine" with the name "activity".
+
+Step 4:
+a. Lable "subject_combine" with the name "subject".
+b. Combine "x_mean_std", "y_combine" and "subject_combine" and create a data.frame, "dataset".
+
+Step 5:
+a. Creates a clean dataset, "dataset2" with the average of each variable for each "activity" (column name) and "each subject" ((column name)).
+b. Export "dataset2" into a text file "dataset2.txt".
+
+Variables in data.frame "dataset":
+## Each of the variables from column 1 to 66 represents a measured or processed value collected from the experiment with Samsung Galaxy S. 
+## Variable in column 67 is the activities (descriptive text) performed in the experiment. 
+## Variable in column 68 is the subject of the experiment.
